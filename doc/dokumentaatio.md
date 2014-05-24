@@ -51,6 +51,10 @@ En ajatellut kirjoittaa javascriptiä tai mitään muuta erikoista sovelluksessa
 * Kirjaudu sisään
 * Kirjaudu ulos
 
+## Käyttöliittymä
+
+\ ![Sivukartta](sivukartta.png)
+
 ## Käynnistys- / käyttöohje
 
 Sovelluksen esittelysivu: [http://hnygren.users.cs.helsinki.fi/tsoha/esittelysivu.html](http://hnygren.users.cs.helsinki.fi/tsoha/esittelysivu.html)
