@@ -51,6 +51,58 @@ En ajatellut kirjoittaa javascriptiä tai mitään muuta erikoista sovelluksessa
 * Kirjaudu sisään
 * Kirjaudu ulos
 
+## Järjestelmän tietosisältö
+
+### Käsitekaavio
+
+\ ![Käsitekaavio](kasitediagram.png)
+
+### Tietokohteet
+
+* Account
+
+|Attribuutti|Arvojoukko|Kuvaus|
+|-----------|----------|------|
+| Name | Merkkijono, max 20 merkkiä | Tunnuksen nimi |
+| Admin | boolean | Onko tunnus ylläpitäjä |
+| Password | Merkkijono, max 20 merkkiä | Tunnuksen salasana |
+
+Tunnuksella voi olla useita kursseja.
+
+* Course
+
+|Attribuutti|Arvojoukko|Kuvaus|
+|-----------|----------|------|
+| Name | Merkkijono, max 20 merkkiä | Kurssin nimi |
+
+Kurssi voi kuulua useammalle tunnuksella ja kursilla voi olla useita aiheita.
+
+* Topic
+
+|Attribuutti|Arvojoukko|Kuvaus|
+|-----------|----------|------|
+| Name | Merkkijono, max 20 merkkiä | Aiheen nimi |
+| Course id | Kokonaisluku | Kurssin id, mihin aihe kuuluu |
+| Summary | Merkkijono, max 20 merkkiä | Tiivistelmä aiheesta |
+| Description | Merkkijono, max 1000 merkkiä | Aiheen kuvaus |
+
+Aihe kuuluu yhteen kurssiin ja sillä on useita projekteja.
+
+* Project
+
+|Attribuutti|Arvojoukko|Kuvaus|
+|-----------|----------|------|
+| Topic id | integer | Aiheen id, mihin projekti kuuluu |
+| Student | Merkkijono, max 20 merkkiä | Projektin tehneen oppilaan nimi |
+| Hours | Kokonaisluku| Kuinka monta tuntia projektiin on käytetty |
+| Työstä annettu arvosana | Kokonaisluku, 1-5 | Työstä saatu arvosana |
+
+Projekti on yksi aiheen suoritus. Se kuuluu yhteen aiheeseen.
+
+### Relaatiotietokantakaavio
+
+\ ![Relaatiotietokantakaavio](relational_database_design_diagram.jpg)
+
 ## Käyttöliittymä
 
 \ ![Sivukartta](sivukartta.png)
