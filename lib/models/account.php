@@ -27,6 +27,19 @@ class Account {
     return $results;
   }
 
+  public static function findAccountWithCredentials($name, $password) {
+    $sql = "select * from account where name = ? and password = ? limit 1";
+    $query = getDatabaseconnection()->prepare($sql);
+    $query->execute(array($name, $password));
+    $result = $query->fetchObject();
+
+    if($result == null) {
+      return null;
+    } else {
+      return new Account($result->id, $result->name, $result->admin, $result->password);
+    }
+  }
+
   public function getId() {
     return $this->id;
   }
