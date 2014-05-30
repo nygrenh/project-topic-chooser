@@ -16,7 +16,11 @@
           <li><a href="index.html">Courses</a></li>
           <li><a href="summary.html">Summary</a></li>
           <li><a href="users/index.html">Users</a></li>
-          <li class="active"><a href="log_in.html">Log in</a></li>
+          <?php if (!isLoggedIn()): ?>
+            <li class="active"><a href="login.php">Log in</a></li>
+          <?php else: ?>
+            <li class="active"><a href="logout.php">Log out</a></li>
+          <?php endif; ?>
         </ul>
       </div>
     </nav>

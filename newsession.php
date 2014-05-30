@@ -20,10 +20,13 @@
 
   $password = $_POST["password"];
 
-  if( Account::findAccountWithCredentials($name, $password) == null ) {
+  $account = Account::findAccountWithCredentials($name, $password);
+
+  if( $account == null ) {
     showView("views/login.php", array(
       'error' => 'Invalid name or password.'
     ));
   } else {
+    $_SESSION['account'] = $account;
     header('Location: index.php');
   }

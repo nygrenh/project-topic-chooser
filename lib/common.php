@@ -7,3 +7,7 @@ session_start();
     require 'views/template.php';
     exit();
   }
+
+  function isLoggedin(){
+    return isset($_SESSION['account']);
+  }
