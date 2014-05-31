@@ -20,14 +20,14 @@
         <td> Student </td>
         <td> 300 </td>
         <td> 3 </td>
-        <td> <a href="edittopic.php?project_id=1"> Edit </a> </td>
+        <td> <a href="editproject.php?project_id=1"> Edit </a> </td>
         <td> <a href=""> Destroy </a> </td>
       </tr>
       <tr>
         <td> Another student </td>
         <td> 7 </td>
         <td> 5 </td>
-        <td> <a href="edittopic.php?project_id=2"> Edit </a> </td>
+        <td> <a href="editproject.php?project_id=2"> Edit </a> </td>
         <td> <a href=""> Destroy </a> </td>
       </tr>
     </tbody>

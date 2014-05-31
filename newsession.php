@@ -1,7 +1,6 @@
 <?php
   require_once 'lib/common.php';
   require_once 'lib/models/account.php';
-  require_once "lib/databaseconnection.php";
 
   if(empty($_POST["name"])) {
     showView("login", array(

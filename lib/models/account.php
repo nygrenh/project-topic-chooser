@@ -1,4 +1,7 @@
 <?php
+
+require_once "lib/databaseconnection.php";
+
 class Account {
 
   private $id;
