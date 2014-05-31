@@ -13,9 +13,9 @@
     <nav class="navbar navbar-default navbar-static-top" role="navigation">
       <div class="container">
         <ul class="nav navbar-nav">
-          <li><a href="index.html">Courses</a></li>
-          <li><a href="summary.html">Summary</a></li>
-          <li><a href="users/index.html">Users</a></li>
+          <li><a href="index.php">Courses</a></li>
+          <li><a href="summary.php">Summary</a></li>
+          <li><a href="users.php">Users</a></li>
           <?php if (!isLoggedIn()): ?>
             <li class="active"><a href="login.php">Log in</a></li>
           <?php else: ?>
@@ -29,7 +29,7 @@
       <?php if (!empty($data->error)): ?>
         <div class="alert alert-danger"><?php echo $data->error; ?></div>
       <?php endif; ?>
-      <?php require $page; ?>
+      <?php require 'views/'.$page.'.php'; ?>
     </div>
   </body>
 </html>

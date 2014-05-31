@@ -4,7 +4,7 @@
   require_once "lib/databaseconnection.php";
 
   if(empty($_POST["name"])) {
-    showView("views/login.php", array(
+    showView("login", array(
       'error' => 'Please give a name.'
     ));
   }
@@ -12,7 +12,7 @@
   $name = $_POST["name"];
 
   if(empty($_POST["password"])) {
-    showView("views/login.php", array(
+    showView("login", array(
       'user' => $user,
       'error' => 'Please give a password.'
     ));
@@ -23,7 +23,7 @@
   $account = Account::findAccountWithCredentials($name, $password);
 
   if( $account == null ) {
-    showView("views/login.php", array(
+    showView("login", array(
       'error' => 'Invalid name or password.'
     ));
   } else {
