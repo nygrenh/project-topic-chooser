@@ -3,7 +3,7 @@
   require_once 'lib/models/account.php';
 
   if(empty($_POST["name"])) {
-    showView("login", array(
+    showView("login", 3, array(
       'error' => 'Please give a name.'
     ));
   }
@@ -11,8 +11,8 @@
   $name = $_POST["name"];
 
   if(empty($_POST["password"])) {
-    showView("login", array(
-      'user' => $user,
+    showView("login", 3, array(
+      'name' => $name,
       'error' => 'Please give a password.'
     ));
   }
@@ -22,7 +22,8 @@
   $account = Account::findAccountWithCredentials($name, $password);
 
   if( $account == null ) {
-    showView("login", array(
+    showView("login", 3, array(
+      'name' => $name,
       'error' => 'Invalid name or password.'
     ));
   } else {

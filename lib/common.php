@@ -2,7 +2,7 @@
 
 session_start();
 
-  function showView($page, $tab=0) {
+  function showView($page, $tab=0, $data) {
     $data = (object)$data;
     require 'views/template.php';
     exit();
