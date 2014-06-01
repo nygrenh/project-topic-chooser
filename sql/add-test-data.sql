@@ -1,8 +1,8 @@
 insert into account(name, admin, password)
-  values('Smith', TRUE, 'password');
+  values('smith', TRUE, 'password');
 
 insert into account(name, admin, password)
-  values('Johnson', false, 'gary');
+  values('johnson', false, 'gary');
 
 insert into account(name, admin, password)
   values('Williams', false, 'test');
