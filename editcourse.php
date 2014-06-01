@@ -1,4 +1,5 @@
 <?php
   require_once 'lib/common.php';
-
-  showView("editcourse");
+  if (loggedIn()) {
+    showView("editcourse");
+  }

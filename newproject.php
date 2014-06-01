@@ -1,3 +1,5 @@
 <?php
   require_once 'lib/common.php';
-  showView("newproject");
+  if (loggedIn()) {
+    showView("newproject");
+  }

@@ -8,6 +8,10 @@ session_start();
     exit();
   }
 
-  function isLoggedin(){
+  function loggedIn(){
     return isset($_SESSION['account']);
+  }
+
+  function admin(){
+    return $_SESSION["admin"];
   }

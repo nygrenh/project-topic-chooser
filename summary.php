@@ -1,4 +1,5 @@
 <?php
-
-require_once 'lib/common.php';
-showView("summary" );
+  require_once 'lib/common.php';
+  if (loggedIn()) {
+    showView("summary" );
+  }

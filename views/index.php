@@ -1,24 +1,24 @@
 <h1> Courses </h1>
-  <p><a href="newcourse.php" class="btn btn-sm btn-default"> New Course </a></p>
+  <?php if (loggedIn()): ?>
+    <p><a href="newcourse.php" class="btn btn-sm btn-default"> New Course </a></p>
+  <?php endif; ?>
   <table class="table table-hover">
     <tr>
       <th> Name </th>
       <th> Teacher </th>
-      <th> </th>
-      <th> </th>
+      <?php if (loggedIn()): ?>
+        <th> </th>
+        <th> </th>
+      <?php endif; ?>
     </tr>
     <tbody>
       <tr>
         <td> <a href = "topics.php?course_id=1"> Database Application </a> </td>
         <td> Teacher </td>
-        <td> <a href="editcourse.php?course_id=1"> Edit </a> </td>
-        <td> <a href=""> Destroy </a> </td>
-      </tr>
-      <tr>
-        <td> <a href = "topics.php?course_id=2"> Database Application </a> </td>
-        <td> Teacher </td>
-        <td> <a href="editcourse.php?course_id=2"> Edit </a> </td>
-        <td> <a href=""> Destroy </a> </td>
+        <?php if (loggedIn()): ?>
+          <td> <a href="editcourse.php?course_id=1"> Edit </a> </td>
+          <td> <a href=""> Destroy </a> </td>
+        <?php endif; ?>
       </tr>
     </tbody>
   </table>

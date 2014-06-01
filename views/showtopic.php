@@ -5,7 +5,8 @@
 <p> Average hours: 153.5
   Average grade: 4
 </p>
-<h2> Completed projects </h2>
+<?php if (loggedIn()): ?>
+  <h2> Completed projects </h2>
   <p><a href="newproject.php" class="btn btn-sm btn-default"> New Project </a></p>
   <table class="table table-hover">
     <tr>
@@ -32,3 +33,4 @@
       </tr>
     </tbody>
   </table>
+<?php endif; ?>
