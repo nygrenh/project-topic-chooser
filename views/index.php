@@ -12,13 +12,15 @@
       <?php endif; ?>
     </tr>
     <tbody>
-      <tr>
-        <td> <a href = "topics.php?course_id=1"> Database Application </a> </td>
-        <td> Teacher </td>
-        <?php if (loggedIn()): ?>
-          <td> <a href="editcourse.php?course_id=1"> Edit </a> </td>
-          <td> <a href=""> Destroy </a> </td>
-        <?php endif; ?>
-      </tr>
+      <?php foreach($data->courses as $course): ?>
+        <tr>
+          <td> <a href = "topics.php?course_id=<?php echo $course->getId(); ?>">  <?php echo $course->getName(); ?> </a> </td>
+          <td> Teacher </td>
+          <?php if (loggedIn()): ?>
+            <td> <a href="editcourse.php?course_id=<?php echo $course->getId(); ?>"> Edit </a> </td>
+            <td> <a href=""> Destroy </a> </td>
+          <?php endif; ?>
+        </tr>
+      <?php endforeach; ?>
     </tbody>
   </table>
