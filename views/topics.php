@@ -12,13 +12,18 @@
     <?php endif; ?>
   </tr>
   <tbody>
-    <tr>
-      <td> <a href="showtopic.php?id=1"> Topic #1 </a> </td>
-      <td> Very interesting topic </td>
-      <?php if (loggedIn()): ?>
-        <td> <a href="edittopic.php?id=1"> Edit </a> </td>
-        <td> <a href=""> Destroy </a> </td>
-      <?php endif; ?>
-    </tr>
+    <?php foreach($data->topics as $topic): ?>
+      <tr>
+        <td>
+          <a href="showtopic.php?id=<?php echo $topic->getId(); ?>">
+           <?php echo $topic->getName(); ?>
+          </a> </td>
+        <td> <?php echo $topic->getSummary(); ?> </td>
+        <?php if (loggedIn()): ?>
+          <td> <a href="edittopic.php?id=<?php echo $topic->getId(); ?>"> Edit </a> </td>
+          <td> <a href=""> Destroy </a> </td>
+        <?php endif; ?>
+      </tr>
+    <?php endforeach; ?>
   </tbody>
 </table>

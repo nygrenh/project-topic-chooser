@@ -1,4 +1,7 @@
 <?php
+
+require_once "lib/databaseconnection.php";
+
 Class Topic {
 
   private $id;
@@ -13,6 +16,20 @@ Class Topic {
     $this->course_id = $course_id;
     $this->summary = $summary;
     $this->description = $description;
+  }
+
+  public static function findTopics($course_id) {
+    $sql = "select * from topic where course_id = ?";
+    $query = getDatabaseconnection()->prepare($sql);
+    $query->execute(array($course_id));
+
+    $results = array();
+    foreach ($query->fetchAll(PDO::FETCH_OBJ) as $result) {
+      $topic = new Topic($result->id, $result->name, $result->course_id, $result->summary, $result->description);
+
+      $results[] = $topic;
+    }
+    return $results;
   }
 
   public function getId() {
