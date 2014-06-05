@@ -39,7 +39,17 @@
 
     <div id="container">
       <?php if (!empty($data->error)): ?>
-        <div class="alert alert-danger"><?php echo $data->error; ?></div>
+        <div class="alert alert-danger">
+        <ul>
+        <?php if (is_array($data->error)): ?>
+          <?php foreach($data->error as $error): ?>
+            <li><?php echo $error; ?></li>
+          <?php endforeach; ?>
+        <?php else: ?>
+          <li><?php echo $data->error; ?></li>
+        <?php endif; ?>
+        </ul>
+        </div>
       <?php endif; ?>
       <?php require 'views/'.$page.'.php'; ?>
     </div>

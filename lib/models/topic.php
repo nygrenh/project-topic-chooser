@@ -9,6 +9,7 @@ Class Topic {
   private $course_id;
   private $summary;
   private $description;
+  private $errors = array();
 
   public function __construct($id, $name, $course_id, $summary, $description) {
     $this->id = $id;
@@ -32,12 +33,31 @@ Class Topic {
     return $results;
   }
 
+  public function insert() {
+    $sql = "insert into topic(name, course_id, summary, description) values(?,?,?,?) returning id";
+    $query = getDatabaseconnection()->prepare($sql);
+    $ok = $query->execute(array($this->name, $this->course_id, $this->summary, $this->description));
+    if($ok) {
+      $this->id = $query->fetchColumn();
+    }
+    return $ok;
+  }
+
   public function getId() {
     return $this->id;
   }
 
   public function setId($id) {
     $this->id = $id;
+    if ( !is_numeric($id) ) {
+      $this->errors['id'] = "Id should be a number";
+    } else if ( $id <= 0 ) {
+      $this->errors['id'] = "Id should be greater than one";
+    } else if ( !preg_match('/^\d+$/', $id) ) {
+      $this->errors['id'] = "Id should be an integer";
+    } else {
+      unset($this->errors['id']);
+    }
   }
 
   public function getName() {
@@ -45,7 +65,14 @@ Class Topic {
   }
 
   public function setName($name) {
-    $this->name = $name;
+    $this->name = trim($name);
+    if ( $this->name == "" ) {
+      $this->errors['name'] = "Name can't be empty";
+    } elseif ( strlen($name) > 20 ) {
+      $this->errors['name'] = "Name can't be over 20 characters";
+    } else {
+      unset($this->errors['name']);
+    }
   }
 
   public function getCourseId() {
@@ -61,7 +88,14 @@ Class Topic {
   }
 
   public function setSummary($summary) {
-    $this->summary = $summary;
+    $this->summary = trim($summary);
+    if ( $this->summary == "" ) {
+      $this->errors['summary'] = "Summary can't be empty";
+    } elseif ( strlen($summary) > 20 ) {
+      $this->errors['summary'] = "Summary can't be over 20 characters";
+    } else {
+      unset($this->errors['summary']);
+    }
   }
 
   public function getDescription() {
@@ -69,7 +103,22 @@ Class Topic {
   }
 
   public function setDescription($description) {
-    $this->description = $description;
+    $this->description = trim($description);
+    if ( $this->description == "" ) {
+      $this->errors['description'] = "Description can't be empty";
+    } elseif ( strlen($description) > 1000 ) {
+      $this->errors['description'] = "Description can't be over 1000 characters";
+    } else {
+      unset($this->errors['description']);
+    }
+  }
+
+  public function valid() {
+    return empty($this->errors);
+  }
+
+  public function getErrors() {
+    return $this->errors;
   }
 
 }
