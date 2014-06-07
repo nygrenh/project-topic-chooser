@@ -33,6 +33,15 @@ Class Topic {
     return $results;
   }
 
+  public static function findTopic($id) {
+    $sql = "select * from topic where id = ? limit 1";
+    $query = getDatabaseconnection()->prepare($sql);
+    $query->execute(array($id));
+    $result = $query->fetchObject();
+    $topic = new Topic($result->id, $result->name, $result->course_id, $result->summary, $result->description);
+    return $topic;
+  }
+
   public function insert() {
     $sql = "insert into topic(name, course_id, summary, description) values(?,?,?,?) returning id";
     $query = getDatabaseconnection()->prepare($sql);
@@ -41,6 +50,12 @@ Class Topic {
       $this->id = $query->fetchColumn();
     }
     return $ok;
+  }
+
+  public function destroy() {
+    $sql = "delete from topic WHERE id = ?";
+    $query = getDatabaseconnection()->prepare($sql);
+    $query->execute(array($this->getId()));
   }
 
   public function getId() {
