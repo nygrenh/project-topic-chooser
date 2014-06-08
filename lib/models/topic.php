@@ -38,6 +38,9 @@ Class Topic {
     $query = getDatabaseconnection()->prepare($sql);
     $query->execute(array($id));
     $result = $query->fetchObject();
+    if($result == null) {
+      return null;
+    }
     $topic = new Topic($result->id, $result->name, $result->course_id, $result->summary, $result->description);
     return $topic;
   }
@@ -50,6 +53,12 @@ Class Topic {
       $this->id = $query->fetchColumn();
     }
     return $ok;
+  }
+
+  public function update() {
+    $sql = "update topic set name = ?, summary = ?, description = ? where id = ?";
+    $query = getDatabaseconnection()->prepare($sql);
+    $query->execute(array($this->getName(), $this->getSummary(), $this->getDescription(), $this->getId()));
   }
 
   public function destroy() {
