@@ -21,7 +21,7 @@
         <td> <?php echo htmlspecialchars($topic->getSummary()); ?> </td>
         <?php if (loggedIn()): ?>
           <td> <a href="edittopic.php?id=<?php echo htmlspecialchars($topic->getId()); ?>"> Edit </a> </td>
-          <td> <a href=""> Destroy </a> </td>
+          <td> <a href="destroytopic.php?id=<?php echo htmlspecialchars($topic->getId()); ?>"> Destroy </a> </td>
         <?php endif; ?>
       </tr>
     <?php endforeach; ?>
