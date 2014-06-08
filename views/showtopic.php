@@ -1,7 +1,8 @@
-<h1> Topic name </h1>
+<h1> <?php echo htmlspecialchars($data->topic->getName()); ?> </h1>
 <p>
-  This is topic's description. If you take this topic, you will fail.
+  <?php echo htmlspecialchars($data->topic->getDescription()); ?>
 <p>
+  Following data is still hardcoded...
 <p> Average hours: 153.5
   Average grade: 4
 </p>
