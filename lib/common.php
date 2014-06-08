@@ -1,6 +1,7 @@
 <?php
 
 session_start();
+$errors = $_SESSION['errors'];
 
   function showView($page, $tab=0, $data) {
     $data = (object)$data;
@@ -14,4 +15,8 @@ session_start();
 
   function admin(){
     return $_SESSION["admin"];
+  }
+
+  function setError($error) {
+    $_SESSION['errors'] = $error;
   }

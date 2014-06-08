@@ -38,16 +38,18 @@
     </nav>
 
     <div id="container">
-      <?php if (!empty($data->error)): ?>
+      <?php $errors = $_SESSION['errors']; ?>
+      <?php unset($_SESSION['errors']); ?>
+      <?php if ($errors != null):?>
         <div class="alert alert-danger">
         <ul>
-        <?php if (is_array($data->error)): ?>
-          <?php foreach($data->error as $error): ?>
-            <li><?php echo $error; ?></li>
-          <?php endforeach; ?>
-        <?php else: ?>
-          <li><?php echo $data->error; ?></li>
-        <?php endif; ?>
+          <?php if (is_array($errors)): ?>
+            <?php foreach($errors as $error): ?>
+              <li><?php echo $error; ?></li>
+            <?php endforeach; ?>
+          <?php else: ?>
+            <li><?php echo $errors; ?></li>
+          <?php endif; ?>
         </ul>
         </div>
       <?php endif; ?>

@@ -6,7 +6,8 @@
     $id = (int)$_POST['id'];
     $topic = Topic::findTopic($id);
     if($topic == null) {
-      // invalid topic id
+      setError('Invalid topic id');
+      header('Location: topics.php?course_id=1');
     } else {
       $topic->setName($_POST['name']);
       $topic->setDescription($_POST['description']);

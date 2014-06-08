@@ -9,11 +9,10 @@
   $topic->setCourseId(1);
   if($topic->valid()){
   	$topic->insert();
-  	header('Location: index.php');
+  	header('Location: topics.php?course_id=1');
   } else {
+    setError($topic->getErrors());
   	showView("newtopic", 0, array(
   		'topic' => $topic,
-  		'error' => $topic->getErrors()
   	));
   }
-  
