@@ -16,9 +16,9 @@
         $topic->update();
         header('Location: index.php');
       } else {
+        setError($topic->getErrors());
         showView("edittopic", 0, array(
-          'topic' => $topic,
-          'error' => $topic->getErrors()
+          'topic' => $topic
         ));
       }
     }
