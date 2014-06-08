@@ -10,6 +10,7 @@
       header('Location: topics.php?course_id=1');
     } else {
       $topic->destroy();
-      header('Location: index.php');
+      setNotice('Topic was succesfully destroyed.');
+      header('Location: topics.php?course_id=1');
     }
   }

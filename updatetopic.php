@@ -14,7 +14,8 @@
       $topic->setSummary($_POST['summary']);
       if($topic->valid()){
         $topic->update();
-        header('Location: index.php');
+        setNotice('Topic was succesfully updated.');
+        header('Location: topics.php?course_id=1');
       } else {
         setError($topic->getErrors());
         showView("edittopic", 0, array(

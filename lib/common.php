@@ -1,7 +1,6 @@
 <?php
 
 session_start();
-$errors = $_SESSION['errors'];
 
   function showView($page, $tab=0, $data) {
     $data = (object)$data;
@@ -18,5 +17,11 @@ $errors = $_SESSION['errors'];
   }
 
   function setError($error) {
-    $_SESSION['errors'] = $error;
+    $_SESSION['message'] = $error;
+    $_SESSION['message_type'] = 'danger';
+  }
+
+  function setNotice($notice) {
+    $_SESSION['message'] = $notice;
+    $_SESSION['message_type'] = 'success';
   }

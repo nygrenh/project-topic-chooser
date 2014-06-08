@@ -38,10 +38,10 @@
     </nav>
 
     <div id="container">
-      <?php $errors = $_SESSION['errors']; ?>
-      <?php unset($_SESSION['errors']); ?>
+      <?php $errors = $_SESSION['message']; ?>
+      <?php unset($_SESSION['message']); ?>
       <?php if ($errors != null):?>
-        <div class="alert alert-danger">
+        <div class="alert alert-<?php echo $_SESSION['message_type']; ?>">
         <ul>
           <?php if (is_array($errors)): ?>
             <?php foreach($errors as $error): ?>
