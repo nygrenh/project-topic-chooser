@@ -107,6 +107,24 @@ Projekti on yksi aiheen suoritus. Se kuuluu yhteen aiheeseen.
 
 \ ![Sivukartta](sivukartta.png)
 
+## Asennustiedot
+
+Asenna sovellus kopioimalla sen tiedostot johonkin sellaiseen kansioon, mistä PHP:tä ymmärtävä palvelimesi löytää sen (esim. /var/www). Varmista,  että palvelinohjelmistollasi on tarvittavat oikeudet tiedostoihin. Koska sovellus käyttää PostgreSQL:ää, tietokannan asetuksia ei tarvitse määritellä erikseen.
+
 ## Käynnistys- / käyttöohje
 
+Sovelluksen osoite: [http://hnygren.users.cs.helsinki.fi/tsoha/](http://hnygren.users.cs.helsinki.fi/tsoha/)
+
 Sovelluksen esittelysivu: [http://hnygren.users.cs.helsinki.fi/tsoha/esittelysivu.html](http://hnygren.users.cs.helsinki.fi/tsoha/esittelysivu.html)
+
+### Tunnukset kirjautumista varten
+
+#### Järjestelmänvalvoja
+
+* nimi: smith
+* salasana: password
+
+#### Opettaja
+
+* nimi: johnson
+* salasana: gary
