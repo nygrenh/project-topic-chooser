@@ -8,7 +8,7 @@
 </p>
 <?php if (loggedIn()): ?>
   <h2> Completed projects </h2>
-  <p><a href="newproject.php" class="btn btn-sm btn-default"> New Project </a></p>
+  <p><a href="newproject.php?topic_id=<?php echo htmlspecialchars($data->topic->getId()); ?>" class="btn btn-sm btn-default"> New Project </a></p>
   <table class="table table-hover">
     <tr>
       <th> Student </th>
@@ -18,20 +18,18 @@
       <th> </th>
     </tr>
     <tbody>
+      <?php foreach($data->projects as $project): ?>
+        <tr>
+          <td> <?php echo htmlspecialchars($project->getStudent()); ?> </td>
+          <td> <?php echo htmlspecialchars($project->getHours()); ?> </td>
+          <td> <?php echo htmlspecialchars($project->getGrade()); ?> </td>
+          <?php if (loggedIn()): ?>
+            <td> <a href="editproject.php?id=<?php echo htmlspecialchars($project->getId()); ?>"> Edit </a> </td>
+            <td> <a href="destroyproject.php?id=<?php echo htmlspecialchars($project->getId()); ?>"> Destroy </a> </td>
+          <?php endif; ?>
+        </tr>
+      <?php endforeach; ?>
       <tr>
-        <td> Student </td>
-        <td> 300 </td>
-        <td> 3 </td>
-        <td> <a href="editproject.php?project_id=1"> Edit </a> </td>
-        <td> <a href=""> Destroy </a> </td>
-      </tr>
-      <tr>
-        <td> Another student </td>
-        <td> 7 </td>
-        <td> 5 </td>
-        <td> <a href="editproject.php?project_id=2"> Edit </a> </td>
-        <td> <a href=""> Destroy </a> </td>
-      </tr>
     </tbody>
   </table>
 <?php endif; ?>

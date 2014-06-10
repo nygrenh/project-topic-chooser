@@ -19,6 +19,20 @@ Class Topic {
     $this->description = $description;
   }
 
+  public static function findAllTopics() {
+    $sql = "select * from course ";
+    $query = getDatabaseconnection()->prepare($sql);
+    $query->execute();
+
+    $results = array();
+    foreach ($query->fetchAll(PDO::FETCH_OBJ) as $result) {
+      $topic = new Topic($result->id, $result->name, $result->course_id, $result->summary, $result->description);
+
+      $results[] = $topic;
+    }
+    return $results;
+  }
+
   public static function findTopics($course_id) {
     $sql = "select * from topic where course_id = ?";
     $query = getDatabaseconnection()->prepare($sql);
@@ -76,7 +90,7 @@ Class Topic {
     if ( !is_numeric($id) ) {
       $this->errors['id'] = "Id should be a number";
     } else if ( $id <= 0 ) {
-      $this->errors['id'] = "Id should be greater than one";
+      $this->errors['id'] = "Id should positive";
     } else if ( !preg_match('/^\d+$/', $id) ) {
       $this->errors['id'] = "Id should be an integer";
     } else {
