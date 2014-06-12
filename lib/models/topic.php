@@ -20,7 +20,7 @@ Class Topic {
   }
 
   public static function findAllTopics() {
-    $sql = "select * from course ";
+    $sql = "select * from topic ";
     $query = getDatabaseconnection()->prepare($sql);
     $query->execute();
 
