@@ -1,10 +1,9 @@
 <h1>Edit Course</h1>
-<form>
-  <div class='field'>
+<form action="updatecourse.php" method="POST">
     <label>Course Name</label>
-    <input class="form-control" placeholder="Course Name" type="text" />
-  </div>
+    <input class="form-control" placeholder="Course Name" type="text" name="name" value="<?php echo htmlspecialchars($data->course->getName()); ?>"/>
+    <input type="hidden" name="id" value="<?php echo htmlspecialchars($data->course->getId()); ?>">
   <div class='actions'>
-    <p><input class="btn btn-default" value="Update Course" /></p>
+    <input type="submit" class="btn btn-default" value="Update course" />
   </div>
 </form>

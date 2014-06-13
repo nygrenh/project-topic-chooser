@@ -5,12 +5,11 @@
   if (loggedIn()) {
     $id = (int)$_GET['id'];
     $course = Course::findCourse($id);
-    if($course==null) {
+    if($course == null) {
       setError('Invalid course id');
-      header('Location: index.php');
     } else {
-      showView("editcourse", 0, array(
-        'course'=> $course
-      ));
+      $course->destroy();
+      setNotice('Course was succesfully destroyed.');
     }
+    header('Location: index.php');
   }

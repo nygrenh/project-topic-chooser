@@ -52,7 +52,7 @@ Class Course {
   public function update() {
     $sql = "update course set name = ? where id = ?";
     $query = getDatabaseconnection()->prepare($sql);
-    $query->execute(array($this->getName()));
+    $query->execute(array($this->getName(), $this->getId()));
   }
 
   public function destroy() {

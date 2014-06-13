@@ -17,8 +17,8 @@
           <td> <a href = "topics.php?course_id=<?php echo htmlspecialchars($course->getId()); ?>">  <?php echo htmlspecialchars($course->getName()); ?> </a> </td>
           <td> Teacher </td>
           <?php if (loggedIn()): ?>
-            <td> <a href="editcourse.php?course_id=<?php echo htmlspecialchars($course->getId()); ?>"> Edit </a> </td>
-            <td> <a href=""> Destroy </a> </td>
+            <td> <a href="editcourse.php?id=<?php echo htmlspecialchars($course->getId()); ?>"> Edit </a> </td>
+            <td> <a href="destroycourse.php?id=<?php echo htmlspecialchars($course->getId()); ?>"> Destroy </a> </td>
           <?php endif; ?>
         </tr>
       <?php endforeach; ?>
