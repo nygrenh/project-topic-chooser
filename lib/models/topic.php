@@ -159,4 +159,18 @@ Class Topic {
     return $this->errors;
   }
 
+  public function averageGrade() {
+    $sql = "select avg(grade) from project where topic_id = ?";
+    $query = getDatabaseconnection()->prepare($sql);
+    $query->execute(array($this->getId()));
+    return (double)$query->fetchColumn();
+  }
+
+  public function averageHours() {
+    $sql = "select avg(hours) from project where topic_id = ?";
+    $query = getDatabaseconnection()->prepare($sql);
+    $query->execute(array($this->getId()));
+    return (double)$query->fetchColumn();
+  }
+
 }

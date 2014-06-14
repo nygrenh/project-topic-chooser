@@ -1,10 +1,9 @@
 <h1> <?php echo htmlspecialchars($data->topic->getName()); ?> </h1>
 <p>
   <?php echo htmlspecialchars($data->topic->getDescription()); ?>
-<p>
-  Following data is still hardcoded...
-<p> Average hours: 153.5
-  Average grade: 4
+</p>
+<p> Average hours: <?php echo htmlspecialchars($data->topic->averageHours()); ?>
+  Average grade: <?php echo htmlspecialchars($data->topic->averageGrade()); ?>
 </p>
 <?php if (loggedIn()): ?>
   <h2> Completed projects </h2>
