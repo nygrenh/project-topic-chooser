@@ -41,7 +41,7 @@ Class Project {
     if($result == null) {
       return null;
     }
-    $project = new Project($result->id, $result->topic_id, $result->hours, $result->grade);
+    $project = new Project($result->id, $result->topic_id, $result->student, $result->hours, $result->grade);
     return $project;
   }
 
@@ -58,7 +58,7 @@ Class Project {
   public function update() {
     $sql = "update project set student = ?, hours = ?, grade = ? where id = ?";
     $query = getDatabaseconnection()->prepare($sql);
-    $query->execute(array($this->student, $this->hours, $this->grade));
+    $query->execute(array($this->student, $this->hours, $this->grade, $this->id));
   }
 
   public function destroy() {

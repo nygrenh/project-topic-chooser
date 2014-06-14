@@ -1,5 +1,16 @@
 <?php
   require_once 'lib/common.php';
+  require_once 'lib/models/project.php';
+
   if (loggedIn()) {
-    showView("editproject");
+    $id = (int)$_GET['id'];
+    $project = Project::findProject($id);
+    if($project==null) {
+      setError('Invalid project id');
+      header('Location: index.php');
+    } else {
+      showView("editproject", 0, array(
+        'project'=> $project
+      ));
+    }
   }

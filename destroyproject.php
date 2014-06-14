@@ -11,7 +11,7 @@
       header('Location: showtopic.php?id='.$topic_id);
     } else {
       $project->destroy();
-      setNotice('Topic was succesfully destroyed.');
+      setNotice('Project was succesfully destroyed.');
       header('Location: showtopic.php?id='.$topic_id);
     }
   }

@@ -10,7 +10,7 @@
   if($topic->valid()){
   	$topic->insert();
     setNotice('Topic was succesfully created.');
-  	header('Location: topics.php?course_id=');
+  	header('Location: topics.php?course_id='.$topic->getCourseId());
   } else {
     setError($topic->getErrors());
   	showView("newtopic", 0, array(
