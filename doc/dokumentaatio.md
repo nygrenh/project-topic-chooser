@@ -99,9 +99,18 @@ Aihe kuuluu yhteen kurssiin ja sillä on useita projekteja.
 
 Projekti on yksi aiheen suoritus. Se kuuluu yhteen aiheeseen.
 
-### Relaatiotietokantakaavio
+## Relaatiotietokantakaavio
 
 \ ![Relaatiotietokantakaavio](relational_database_design_diagram.jpg)
+
+## Järjestelmän yleisrakenne
+
+Sovellus perustuu MVC-malliin. Kontrollerit sijaitsevat projektin juuressa.
+Näkumät sijaitsevat kansiossa views. Mallit sijaitsevat kansiossa lib/models. Muut apukirjastot ovat kansiossa lib.
+
+Kaikki tiedostonimet ovat kirjoitettu pienellä. Nimistä on yritetty saada mahdollisimman selkeitä. Tiedoston nimessä on tietokohteen nimi ja mahdollisesti etuliite (new, edit, update, destroy). Tästä poikkeuksena index.php, joka näyttää listauksen kursseista.
+
+Sovellus käyttää istuntoa kirjautumiseen ja viestien muistamiseen. Viestit asetetaan tiedostosta lib/common.php löytyvillä metodeilla setError() ja setNotice().
 
 ## Käyttöliittymä
 
