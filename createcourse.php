@@ -7,7 +7,7 @@
   if($course->valid()){
     $course->insert();
     setNotice('Course was succesfully created.');
-    header('Location: index.php');
+    header('Location: topics.php?course_id='.$course->getId());
   } else {
     setError($course->getErrors());
     showView("newcourse", 0, array(

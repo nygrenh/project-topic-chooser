@@ -13,7 +13,7 @@
       if($course->valid()){
         $course->update();
         setNotice('Course was succesfully updated.');
-        header('Location: topics.php?id='.$id);
+        header('Location: topics.php?course_id='.$id);
       } else {
         setError($course->getErrors());
         showView("editcourse", 0, array(

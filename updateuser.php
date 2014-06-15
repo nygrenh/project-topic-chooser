@@ -16,7 +16,7 @@
       if($account->valid()){
         $account->update();
         setNotice('User was succesfully updated.');
-        header('Location: users.php');
+        header('Location: showuser.php?id='.$account->getId());
       } else {
         setError($account->getErrors());
         showView("edituser", 0, array(
