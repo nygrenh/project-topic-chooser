@@ -137,3 +137,11 @@ Sovelluksen esittelysivu: [http://hnygren.users.cs.helsinki.fi/tsoha/esittelysiv
 
 * nimi: johnson
 * salasana: gary
+
+## Testaus
+
+En ole omaa laiskuuttani kirjoittanut testejä. Olen kuitenkin käynyt kaiken läpi selaimella.
+
+## Omat kokemukset
+
+En ole kauhea kurssin fani. Tästä lisää myöhemmin.
