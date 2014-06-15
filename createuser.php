@@ -9,8 +9,8 @@
   $account->setAdmin($_POST['administrator'] == 'on');
   if($account->valid()){
     $account->insert();
-    setNotice('Account was succesfully created.');
-    header('Location: index.php');
+    setNotice('User was succesfully created.');
+    header('Location: users.php');
   } else {
     setError($account->getErrors());
     showView("newuser", 0, array(

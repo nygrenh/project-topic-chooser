@@ -44,6 +44,19 @@ class Account {
     }
   }
 
+  public static function findAccount($id) {
+    $sql = "select * from account where id = ? limit 1";
+    $query = getDatabaseconnection()->prepare($sql);
+    $query->execute(array($id));
+    $result = $query->fetchObject();
+
+    if($result == null) {
+      return null;
+    } else {
+      return new Account($result->id, $result->name, $result->admin, $result->password);
+    }
+  }
+
   public function insert() {
     $sql = "insert into account(name, admin, password) values(?, ?, ?) returning id";
     $query = getDatabaseconnection()->prepare($sql);
@@ -57,7 +70,7 @@ class Account {
   }
 
   public function update() {
-    $sql = "update account set name = ? admin = ? password where id = ?";
+    $sql = "update account set name = ?, admin = ?, password = ? where id = ?";
     $query = getDatabaseconnection()->prepare($sql);
     // When casting booleans to strings PHP converts false to '' and psql doesn't like that
     $admin = $this->admin ? 't' : 'f';
@@ -65,7 +78,7 @@ class Account {
   }
 
   public function destroy() {
-    $sql = "delete from course WHERE id = ?";
+    $sql = "delete from account WHERE id = ?";
     $query = getDatabaseconnection()->prepare($sql);
     $query->execute(array($this->getId()));
   }

@@ -4,16 +4,20 @@
   <tr>
     <th> Name </th>
     <th> Type </th>
-    <th> </th>
-    <th> </th>
+    <?php if (admin()): ?>
+      <th> </th>
+      <th> </th>
+    <?php endif; ?>
   </tr>
   <tbody>
     <?php foreach($data->accounts as $account): ?>
       <tr>
         <td> <a href = "showuser.php?id=<?php echo htmlspecialchars($account->getId()); ?>">  <?php echo htmlspecialchars($account->getName()); ?> </a> </td>
         <td> <?php echo htmlspecialchars($account->getType()); ?> </td>
-        <td> <a href="edituser.php?id=<?php echo htmlspecialchars($account->getId()); ?>"> Edit </a> </td>
-        <td> <a href="destroyuser.php?id=<?php echo htmlspecialchars($account->getId()); ?>"> Destroy </a> </td>
+        <?php if (admin()): ?>
+          <td> <a href="edituser.php?id=<?php echo htmlspecialchars($account->getId()); ?>"> Edit </a> </td>
+          <td> <a href="destroyuser.php?id=<?php echo htmlspecialchars($account->getId()); ?>"> Destroy </a> </td>
+        <?php endif; ?>
       </tr>
     <?php endforeach; ?>
   </tbody>
