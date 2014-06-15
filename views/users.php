@@ -8,5 +8,13 @@
     <th> </th>
   </tr>
   <tbody>
+    <?php foreach($data->accounts as $account): ?>
+      <tr>
+        <td> <a href = "showuser.php?id=<?php echo htmlspecialchars($account->getId()); ?>">  <?php echo htmlspecialchars($account->getName()); ?> </a> </td>
+        <td> <?php echo htmlspecialchars($account->getType()); ?> </td>
+        <td> <a href="edituser.php?id=<?php echo htmlspecialchars($account->getId()); ?>"> Edit </a> </td>
+        <td> <a href="destroyuser.php?id=<?php echo htmlspecialchars($account->getId()); ?>"> Destroy </a> </td>
+      </tr>
+    <?php endforeach; ?>
   </tbody>
 </table>
