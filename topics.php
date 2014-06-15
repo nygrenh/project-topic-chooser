@@ -5,5 +5,6 @@
   $course_id = (int)$_GET['course_id'];
   $topics = Topic::findTopics($course_id);
   showView("topics", 0, array(
-    'topics' => $topics
+    'topics' => $topics,
+    'course_id' => $course_id
   ));

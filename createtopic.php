@@ -6,7 +6,7 @@
   $topic->setName($_POST['name']);
   $topic->setSummary($_POST['summary']);
   $topic->setDescription($_POST['description']);
-  $topic->setCourseId(1);
+  $topic->setCourseId($_POST['course_id']);
   if($topic->valid()){
   	$topic->insert();
     setNotice('Topic was succesfully created.');

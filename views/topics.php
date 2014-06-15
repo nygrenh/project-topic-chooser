@@ -1,6 +1,6 @@
 <h1> Topics </h1>
 <?php if (loggedIn()): ?>
-  <p><a href="newtopic.php" class="btn btn-sm btn-default"> New Topic </a></p>
+  <p><a href="newtopic.php?course_id=<?php echo htmlspecialchars($data->course_id); ?>" class="btn btn-sm btn-default"> New Topic </a></p>
 <?php endif; ?>
 <table class="table table-hover">
   <tr>
