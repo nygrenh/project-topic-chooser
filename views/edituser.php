@@ -1,4 +1,4 @@
-<h1>New User</h1>
+<h1>Edit User</h1>
 <form action="updateuser.php" method="POST">
   <label>Name</label>
   <input class="form-control" placeholder="Name" type="text" name="name" value="<?php echo htmlspecialchars($data->account->getName()); ?>" />
