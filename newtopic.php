@@ -1,8 +1,11 @@
 <?php
   require_once 'lib/common.php';
+  require_once 'lib/models/topic.php';
+
   if (loggedIn()) {
-    $course_id = (int)$_GET['course_id'];
+    $topic = new Topic();
+    $topic->setCourseId((int)$_GET['course_id']);
     showView("newtopic", 0, array(
-      course_id => $course_id
+      'topic' => $topic
     ));
   }
