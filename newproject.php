@@ -1,8 +1,11 @@
 <?php
   require_once 'lib/common.php';
+  require_once 'lib/models/project.php';
+
   if (loggedIn()) {
-    $topic_id = (int)$_GET['topic_id'];
+    $project = new Project();
+    $project->setTopicId((int)$_GET['topic_id']);
     showView("newproject", 0, array(
-      'topic_id' => $topic_id
+      'project' => $project
     ));
   }

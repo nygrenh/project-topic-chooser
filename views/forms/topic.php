@@ -5,3 +5,4 @@
 <label>Description</label>
 <input class="form-control" placeholder="Description" type="text" name="description" value="<?php echo htmlspecialchars($data->topic->getDescription()); ?>"/>
 <input type="hidden" name="course_id" value="<?php echo htmlspecialchars($data->topic->getCourseId()); ?>">
+<input type="hidden" name="id" value="<?php echo htmlspecialchars($data->topic->getId()); ?>">
