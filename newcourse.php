@@ -6,8 +6,11 @@
   if (loggedIn()) {
     $course = new Course();
     $teachers = Account::findAllTeachers();
+    // Select current user by default
+    $coursesteachers = array($_SESSION['name'] => true);
     showView("newcourse",0, array(
       'course' => $course,
-      'teachers' => $teachers
+      'teachers' => $teachers,
+      'coursesteachers' => $coursesteachers
     ));
   }

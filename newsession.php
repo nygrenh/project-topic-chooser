@@ -27,6 +27,7 @@
     ));
   } else {
     $_SESSION['account'] = $account;
+    $_SESSION['name'] = $account->getName();
     $_SESSION['admin'] = $account->getAdmin();
     header('Location: index.php');
   }
