@@ -12,6 +12,17 @@
       $course->setName($_POST['name']);
       if($course->valid()){
         $course->update();
+        // Update teacher associations
+        $teachers = Account::findAllTeachers();
+        foreach($teachers as $teacher) {
+          if (isset($_POST['teacher-'.$teacher->getName()])) {
+            if(!$course->hasTeacher($teacher)) {
+              $course->addTeacher($teacher);
+            }
+          } else {
+            $course->removeTeacher($teacher);
+          }
+        }
         setNotice('Course was succesfully updated.');
         header('Location: topics.php?course_id='.$id);
       } else {

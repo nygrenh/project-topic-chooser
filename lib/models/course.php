@@ -1,6 +1,7 @@
 <?php
 
 require_once "lib/databaseconnection.php";
+require_once "lib/models/coursestoaccounts.php";
 
 Class Course {
 
@@ -99,6 +100,42 @@ Class Course {
 
   public function getErrors() {
     return $this->errors;
+  }
+
+  // Adds a teacher to the course. Assumes that course has valid id
+  public function addTeacher($teacher) {
+    $association = new CoursesToAccounts();
+    $association->setCourseId($this->id);
+    $association->setAccountId($teacher->getId());
+    $association->insert();
+  }
+
+  public function removeTeacher($teacher) {
+    $associations = CoursesToAccounts::findAssociations($this->id, $teacher->getId());
+    foreach($associations as $association) {
+      $association->destroy();
+    }
+  }
+
+  public function getTeachers() {
+    return CoursesToAccounts::findAccounts($this->id);
+  }
+
+  public function hasTeacher($teacher) {
+    $associations = CoursesToAccounts::findAssociations($this->id, $teacher->getId());
+    return sizeof($associations) != 0;
+  }
+
+  public function teachersToSentence(){
+    $teachers = $this->getTeachers();
+    if(sizeof($teachers) == 0 ) {
+      return "No teachers";
+    }
+    $sentence = "";
+    foreach($teachers as $teacher) {
+      $sentence = $sentence." ".$teacher->getName();
+    }
+    return $sentence;
   }
 
 }

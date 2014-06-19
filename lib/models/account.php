@@ -31,6 +31,20 @@ class Account {
     return $results;
   }
 
+  public static function findAllTeachers() {
+    $sql = "SELECT * FROM account where admin = false";
+    $query = getDatabaseconnection()->prepare($sql);
+    $query->execute();
+
+    $results = array();
+    foreach ($query->fetchAll(PDO::FETCH_OBJ) as $result) {
+      $account = new Account($result->id, $result->name, $result->admin, $result->password);
+
+      $results[] = $account;
+    }
+    return $results;
+  }
+
   public static function findAccountWithCredentials($name, $password) {
     $sql = "select * from account where name = ? and password = ? limit 1";
     $query = getDatabaseconnection()->prepare($sql);

@@ -1,31 +1,41 @@
 <?php
+
+require_once "lib/models/account.php";
+
 class CoursesToAccounts {
 
-  private $id;
   private $account_id;
   private $course_id;
 
-  public function __construct($id, $account_id, $course_id) {
-    $this->id = $id;
+  public function __construct($account_id, $course_id) {
     $this->account_id = $account_id;
     $this->course_id = $course_id;
   }
 
-  public function getId() {
-    return $this->id;
+  public static function findAccounts($course_id) {
+    $sql = "select account_id from coursestoaccounts where course_id = ?";
+    $query = getDatabaseconnection()->prepare($sql);
+    $query->execute(array($course_id));
+
+    $results = array();
+    foreach ($query->fetchAll(PDO::FETCH_OBJ) as $result) {
+      $account = Account::findAccount($result->account_id);
+      $results[] = $account;
+    }
+    return $results;
   }
 
-  public function setId($id) {
-    $this->id = $id;
-    if ( !is_numeric($id) ) {
-      $this->errors['id'] = "Id should be a number";
-    } else if ( $id <= 0 ) {
-      $this->errors['id'] = "Id should positive";
-    } else if ( !preg_match('/^\d+$/', $id) ) {
-      $this->errors['id'] = "Id should be an integer";
-    } else {
-      unset($this->errors['id']);
+  public static function findAssociations($course_id, $account_id) {
+    $sql = "select * from coursestoaccounts where course_id = ? and account_id = ?";
+    $query = getDatabaseconnection()->prepare($sql);
+    $query->execute(array($course_id, $account_id));
+
+    $results = array();
+    foreach ($query->fetchAll(PDO::FETCH_OBJ) as $result) {
+      $association = new CoursesToAccounts($result->account_id, $result->course_id);
+      $results[] = $association;
     }
+    return $results;
   }
 
   public function getAccountId() {
@@ -60,6 +70,18 @@ class CoursesToAccounts {
     } else {
       unset($this->errors['course_id']);
     }
+  }
+
+  public function insert() {
+    $sql = "insert into coursestoaccounts(account_id, course_id) values(?, ?)";
+    $query = getDatabaseconnection()->prepare($sql);
+    $query->execute(array($this->account_id, $this->course_id));
+  }
+
+  public function destroy() {
+    $sql = "delete from coursestoaccounts where account_id = ? and course_id = ?";
+    $query = getDatabaseconnection()->prepare($sql);
+    $query->execute(array($this->account_id, $this->course_id));
   }
 
 }
