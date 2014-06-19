@@ -1,5 +1,5 @@
 insert into account(name, admin, password)
-  values('smith', TRUE, 'password');
+  values('smith', true, 'password');
 
 insert into account(name, admin, password)
   values('johnson', false, 'gary');
@@ -20,4 +20,4 @@ insert into project(topic_id, student, hours, grade)
     values(1, 'Another Student', 7, 5);
 
 insert into coursestoaccounts(account_id, course_id)
-  values(1, 1);
+  values(2, 1);
