@@ -106,8 +106,8 @@ Class Topic {
     $this->name = trim($name);
     if ( $this->name == "" ) {
       $this->errors['name'] = "Name can't be empty";
-    } elseif ( strlen($name) > 20 ) {
-      $this->errors['name'] = "Name can't be over 20 characters";
+    } elseif ( strlen($name) > 60 ) {
+      $this->errors['name'] = "Name can't be over 60 characters";
     } else {
       unset($this->errors['name']);
     }
@@ -129,8 +129,8 @@ Class Topic {
     $this->summary = trim($summary);
     if ( $this->summary == "" ) {
       $this->errors['summary'] = "Summary can't be empty";
-    } elseif ( strlen($summary) > 20 ) {
-      $this->errors['summary'] = "Summary can't be over 20 characters";
+    } elseif ( strlen($summary) > 60 ) {
+      $this->errors['summary'] = "Summary can't be over 60 characters";
     } else {
       unset($this->errors['summary']);
     }

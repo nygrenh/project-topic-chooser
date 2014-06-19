@@ -109,8 +109,8 @@ Class Project {
     $this->student = trim($student);
     if ( $this->student == "" ) {
       $this->errors['student'] = "Student name can't be empty";
-    } elseif ( strlen($student) > 20 ) {
-      $this->errors['student'] = "Student name can't be over 20 characters";
+    } elseif ( strlen($student) > 60 ) {
+      $this->errors['student'] = "Student name can't be over 60 characters";
     } else {
       unset($this->errors['student']);
     }
