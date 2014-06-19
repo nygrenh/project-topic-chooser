@@ -9,7 +9,7 @@
       setError('Invalid user id');
       header('Location: users.php');
     } else {
-      showView("edituser", 0, array(
+      showView("edituser", 2, array(
         'account'=> $account
       ));
     }
