@@ -2,6 +2,7 @@
 
 require_once "lib/databaseconnection.php";
 require_once "lib/models/coursestoaccounts.php";
+require_once "lib/models/topic.php";
 
 Class Course {
 
@@ -136,6 +137,10 @@ Class Course {
       $sentence = $sentence." ".$teacher->getName();
     }
     return $sentence;
+  }
+
+  public function getTopics() {
+    return Topic::findTopics($this->id);
   }
 
 }

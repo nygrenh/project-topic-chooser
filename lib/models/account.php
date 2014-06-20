@@ -1,6 +1,7 @@
 <?php
 
 require_once "lib/databaseconnection.php";
+require_once "lib/models/coursestoaccounts.php";
 
 class Account {
 
@@ -49,6 +50,19 @@ class Account {
     $sql = "select * from account where name = ? and password = ? limit 1";
     $query = getDatabaseconnection()->prepare($sql);
     $query->execute(array($name, $password));
+    $result = $query->fetchObject();
+
+    if($result == null) {
+      return null;
+    } else {
+      return new Account($result->id, $result->name, $result->admin, $result->password);
+    }
+  }
+
+  public static function findAccountWithName($name) {
+    $sql = "select * from account where name = ? limit 1";
+    $query = getDatabaseconnection()->prepare($sql);
+    $query->execute(array($name));
     $result = $query->fetchObject();
 
     if($result == null) {
@@ -171,5 +185,9 @@ class Account {
 
   public function getErrors() {
     return $this->errors;
+  }
+
+  public function getCourses() {
+    return CoursesToAccounts::findCourses($this->id);
   }
 }

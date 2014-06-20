@@ -1,6 +1,7 @@
 <?php
 
 require_once "lib/models/account.php";
+require_once "lib/models/course.php";
 
 class CoursesToAccounts {
 
@@ -21,6 +22,19 @@ class CoursesToAccounts {
     foreach ($query->fetchAll(PDO::FETCH_OBJ) as $result) {
       $account = Account::findAccount($result->account_id);
       $results[] = $account;
+    }
+    return $results;
+  }
+
+  public static function findCourses($account_id) {
+    $sql = "select course_id from coursestoaccounts where account_id = ?";
+    $query = getDatabaseconnection()->prepare($sql);
+    $query->execute(array($account_id));
+
+    $results = array();
+    foreach ($query->fetchAll(PDO::FETCH_OBJ) as $result) {
+      $course_id = Course::findCourse($result->course_id);
+      $results[] = $course_id;
     }
     return $results;
   }
