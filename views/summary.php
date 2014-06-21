@@ -7,6 +7,7 @@
       <li> <?php echo htmlspecialchars($topic->getName()); ?> </li>
       Average grade: <?php echo htmlspecialchars($topic->averageGrade()); ?>,
       average hours: <?php echo htmlspecialchars($topic->averageHours()); ?>
+      failure rate: <?php echo htmlspecialchars($topic->failureRate()); ?>%
     <?php endforeach; ?>
     </ul>
   <?php endforeach; ?>

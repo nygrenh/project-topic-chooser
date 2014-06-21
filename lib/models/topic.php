@@ -160,17 +160,37 @@ Class Topic {
   }
 
   public function averageGrade() {
-    $sql = "select avg(grade) from project where topic_id = ?";
+    $sql = "select avg(grade) from project where topic_id = ? and grade != 0";
     $query = getDatabaseconnection()->prepare($sql);
     $query->execute(array($this->getId()));
     return (double)$query->fetchColumn();
   }
 
   public function averageHours() {
-    $sql = "select avg(hours) from project where topic_id = ?";
+    $sql = "select avg(hours) from project where topic_id = ? and grade != 0";
     $query = getDatabaseconnection()->prepare($sql);
     $query->execute(array($this->getId()));
     return (double)$query->fetchColumn();
+  }
+
+  public function failureCount() {
+    $sql = "select count(grade) from project where topic_id = ? and grade = 0";
+    $query = getDatabaseconnection()->prepare($sql);
+    $query->execute(array($this->getId()));
+    return (double)$query->fetchColumn();
+  }
+
+  public function successCount() {
+    $sql = "select count(grade) from project where topic_id = ? and grade != 0";
+    $query = getDatabaseconnection()->prepare($sql);
+    $query->execute(array($this->getId()));
+    return (double)$query->fetchColumn();
+  }
+
+  public function failureRate() {
+    $failures = $this->failureCount();
+    $successes = $this->successCount();
+    return $failures / ($failures + $successes) * 100;
   }
 
 }

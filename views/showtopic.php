@@ -4,6 +4,7 @@
 </p>
 <p> Average hours: <?php echo htmlspecialchars($data->topic->averageHours()); ?>
   Average grade: <?php echo htmlspecialchars($data->topic->averageGrade()); ?>
+  Failure rate: <?php echo htmlspecialchars($data->topic->failureRate()); ?>%
 </p>
 <?php if (loggedIn()): ?>
   <h2> Completed projects </h2>
@@ -18,7 +19,7 @@
     </tr>
     <tbody>
       <?php foreach($data->projects as $project): ?>
-        <tr>
+        <tr<?php if($project->getGrade() == 0): ?> class="disabled"<?php endif ?>>
           <td> <?php echo htmlspecialchars($project->getStudent()); ?> </td>
           <td> <?php echo htmlspecialchars($project->getHours()); ?> </td>
           <td> <?php echo htmlspecialchars($project->getGrade()); ?> </td>

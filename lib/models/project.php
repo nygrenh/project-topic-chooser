@@ -142,7 +142,7 @@ Class Project {
     if ( !is_numeric($grade) ) {
       $this->errors['grade'] = "Grade should be a number";
     } else if ( $grade < 0 ) {
-      $this->errors['grade'] = "Grade should be at least one";
+      $this->errors['grade'] = "Grade should be positive";
     } else if ( $grade > 5 ) {
       $this->errors['grade'] = "Grade should be smaller than 6";
     } else if ( !preg_match('/^\d+$/', $grade) ) {
