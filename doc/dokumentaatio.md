@@ -4,9 +4,9 @@
 
 Työn on tarkoitus toimia harjoitustyön aiheen valintaa helpoittavana työkaluna. Sivulla listataan harjoitustyön aiheita. Sivulla näytetään kuinka monta kertaa työ on tehty, kuinka paljon siihen on kulunut aikaa ja mikä arvosana työstä on annettu. Sovelluksessa on mahdollista hallita töiden aiheita ja suoritustietoja.
 
-Ajattelin kirjoittaa softan PHP:llä ja laittaa sen laitoksen users-palvelimelle. Tietokantana käytän PostgreSQL:ää. En aio tukea muita kantoja.
+Softa on toteutettu PHP:llä ja se on laitoksen users-palvelimelle. Tietokantana käytän PostgreSQL:ää. En aio tukea muita kantoja.
 
-En ajatellut kirjoittaa javascriptiä tai mitään muuta erikoista sovelluksessa, eli käyttäjän selaimen ei tarvitse tukea mitään erikoista.
+Sovellus ei käytä javascriptiä tai mitään muuta erikoista, eli käyttäjän selaimen ei tarvitse tukea mitään erikoista.
 
 ## Yleiskuva järjestelmästä
 
@@ -152,4 +152,4 @@ Tilastoista olisi voinut tehdä monipuolisempia. Lisäksi tilastoista olisi voin
 
 ## Omat kokemukset
 
-En ole kauhea kurssin fani. Kauhea dokumentaation vääntäminen ennen ohjelmoinnin aloittamista on melko epäkäytännöllinen tapa toteuttaa ohjelmia. Kurssin oppiminen keskittyi pääosin PHP:n syntaksiin. Lisäksi kurssilla ärsytti, että users-palvelimella PHP on jumissa versiossa 5.3, mikä teki monista asioista hankalaa. 
+En ole kauhea kurssin fani. Kauhea dokumentaation vääntäminen ennen ohjelmoinnin aloittamista on melko epäkäytännöllinen tapa toteuttaa ohjelmia. Kurssin oppiminen keskittyi pääosin PHP:n syntaksiin. Lisäksi kurssilla ärsytti, että users-palvelimella PHP on jumissa versiossa 5.3, mikä teki monista asioista hankalaa.

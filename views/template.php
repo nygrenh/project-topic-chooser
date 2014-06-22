@@ -17,12 +17,13 @@
             <a href="index.php">Courses</a>
           </li>
           <?php if (loggedIn()): ?>
-            <li <?php if ($tab==1): ?> class="active" <?php endif; ?>>
-              <a href="summary.php">Summary</a>
-            </li>
             <?php if (admin()): ?>
               <li <?php if ($tab==2): ?> class="active" <?php endif; ?>>
                 <a href="users.php">Users</a>
+              </li>
+            <?php else: ?>
+              <li <?php if ($tab==1): ?> class="active" <?php endif; ?>>
+                <a href="summary.php">Summary</a>
               </li>
             <?php endif; ?>
             <li <?php if ($tab==3): ?> class="active" <?php endif; ?>>
