@@ -63,9 +63,9 @@ En ajatellut kirjoittaa javascriptiä tai mitään muuta erikoista sovelluksessa
 
 |Attribuutti|Arvojoukko|Kuvaus|
 |-----------|----------|------|
-| Name | Merkkijono, max 20 merkkiä | Tunnuksen nimi |
+| Name | Merkkijono, max 60 merkkiä | Tunnuksen nimi |
 | Admin | boolean | Onko tunnus ylläpitäjä |
-| Password | Merkkijono, max 20 merkkiä | Tunnuksen salasana |
+| Password | Merkkijono, max 60 merkkiä | Tunnuksen salasana |
 
 Tunnuksella voi olla useita kursseja.
 
@@ -73,7 +73,7 @@ Tunnuksella voi olla useita kursseja.
 
 |Attribuutti|Arvojoukko|Kuvaus|
 |-----------|----------|------|
-| Name | Merkkijono, max 20 merkkiä | Kurssin nimi |
+| Name | Merkkijono, max 60 merkkiä | Kurssin nimi |
 
 Kurssi voi kuulua useammalle tunnuksella ja kursilla voi olla useita aiheita.
 
@@ -81,9 +81,9 @@ Kurssi voi kuulua useammalle tunnuksella ja kursilla voi olla useita aiheita.
 
 |Attribuutti|Arvojoukko|Kuvaus|
 |-----------|----------|------|
-| Name | Merkkijono, max 20 merkkiä | Aiheen nimi |
+| Name | Merkkijono, max 60 merkkiä | Aiheen nimi |
 | Course id | Kokonaisluku | Kurssin id, mihin aihe kuuluu |
-| Summary | Merkkijono, max 20 merkkiä | Tiivistelmä aiheesta |
+| Summary | Merkkijono, max 60 merkkiä | Tiivistelmä aiheesta |
 | Description | Merkkijono, max 1000 merkkiä | Aiheen kuvaus |
 
 Aihe kuuluu yhteen kurssiin ja sillä on useita projekteja.
@@ -93,11 +93,11 @@ Aihe kuuluu yhteen kurssiin ja sillä on useita projekteja.
 |Attribuutti|Arvojoukko|Kuvaus|
 |-----------|----------|------|
 | Topic id | integer | Aiheen id, mihin projekti kuuluu |
-| Student | Merkkijono, max 20 merkkiä | Projektin tehneen oppilaan nimi |
+| Student | Merkkijono, max 60 merkkiä | Projektin tehneen oppilaan nimi |
 | Hours | Kokonaisluku| Kuinka monta tuntia projektiin on käytetty |
-| Työstä annettu arvosana | Kokonaisluku, 1-5 | Työstä saatu arvosana |
+| Työstä annettu arvosana | Kokonaisluku, 0-5 | Työstä saatu arvosana |
 
-Projekti on yksi aiheen suoritus. Se kuuluu yhteen aiheeseen.
+Projekti on yksi aiheen suoritus. Se kuuluu yhteen aiheeseen. Jos arvosana on 0, työ on hylätty.
 
 ## Relaatiotietokantakaavio
 
@@ -106,7 +106,7 @@ Projekti on yksi aiheen suoritus. Se kuuluu yhteen aiheeseen.
 ## Järjestelmän yleisrakenne
 
 Sovellus perustuu MVC-malliin. Kontrollerit sijaitsevat projektin juuressa.
-Näkumät sijaitsevat kansiossa views. Mallit sijaitsevat kansiossa lib/models. Muut apukirjastot ovat kansiossa lib.
+Näkymät sijaitsevat kansiossa views. Kansiossa views/forms sijaitsee lomakkeiden kentät, joita käytetään useammassa näkymässä. Mallit sijaitsevat kansiossa lib/models. Muut apukirjastot ovat kansiossa lib.
 
 Kaikki tiedostonimet ovat kirjoitettu pienellä. Nimistä on yritetty saada mahdollisimman selkeitä. Tiedoston nimessä on tietokohteen nimi ja mahdollisesti etuliite (new, edit, update, destroy). Tästä poikkeuksena index.php, joka näyttää listauksen kursseista.
 
@@ -142,6 +142,14 @@ Sovelluksen esittelysivu: [http://hnygren.users.cs.helsinki.fi/tsoha/esittelysiv
 
 En ole omaa laiskuuttani kirjoittanut testejä. Olen kuitenkin käynyt kaiken läpi selaimella.
 
+## Bugit ja puutteet
+
+Mitään bugeja en ohjelmassa huomannut. Puutteina ohjelma ei hashaa salasanoja ja ohjelma on haavoittuvainen Cross-site request forgery -hyökkäyksille. Lisäksi sivujen tyyli on paikoittain hieman kankea.
+
+## Jatkokehitysideoita
+
+Tilastoista olisi voinut tehdä monipuolisempia. Lisäksi tilastoista olisi voinut piirtää kaavioita. Jonkinlainen hakuominaisuus olisi varmaan myös kiva.
+
 ## Omat kokemukset
 
-En ole kauhea kurssin fani. Tästä lisää myöhemmin.
+En ole kauhea kurssin fani. Kauhea dokumentaation vääntäminen ennen ohjelmoinnin aloittamista on melko epäkäytännöllinen tapa toteuttaa ohjelmia. Kurssin oppiminen keskittyi pääosin PHP:n syntaksiin. Lisäksi kurssilla ärsytti, että users-palvelimella PHP on jumissa versiossa 5.3, mikä teki monista asioista hankalaa. 
