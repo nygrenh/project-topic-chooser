@@ -19,4 +19,7 @@
         'topic_id' => $project->getTopicId()
       ));
     }
+  } else {
+    setError("Please log in.");
+    header('Location: login.php');
   }

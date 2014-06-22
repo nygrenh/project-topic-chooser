@@ -8,4 +8,7 @@
     showView("newproject", 0, array(
       'project' => $project
     ));
+  } else {
+    setError("Please log in.");
+    header('Location: login.php');
   }

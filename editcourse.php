@@ -20,4 +20,7 @@
         'coursesteachers' => $coursesteachers
       ));
     }
+  } else {
+    setError("Please log in.");
+    header('Location: login.php');
   }

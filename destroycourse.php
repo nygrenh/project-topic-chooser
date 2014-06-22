@@ -12,4 +12,7 @@
       setNotice('Course was succesfully destroyed.');
     }
     header('Location: index.php');
+  } else {
+    setError("Please log in.");
+    header('Location: login.php');
   }

@@ -7,4 +7,7 @@
     showView("newuser", 2, array(
       'account' => $account
     ));
+  } else {
+    setError("You can't do that!");
+    header('Location: index.php');
   }

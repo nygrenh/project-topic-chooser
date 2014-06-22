@@ -14,4 +14,7 @@
       setNotice('Project was succesfully destroyed.');
       header('Location: showtopic.php?id='.$topic_id);
     }
+  } else {
+    setError("Please log in.");
+    header('Location: login.php');
   }

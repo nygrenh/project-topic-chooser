@@ -24,4 +24,7 @@
         ));
       }
     }
+  } else {
+    setError("You can't do that!");
+    header('Location: index.php');
   }

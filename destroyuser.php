@@ -13,4 +13,7 @@
       setNotice('User was succesfully destroyed.');
       header('Location: users.php');
     }
+  } else {
+    setError("You can't do that.");
+    header('Location: index.php');
   }

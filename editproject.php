@@ -13,4 +13,7 @@
         'project'=> $project
       ));
     }
+  } else {
+    setError("Please log in.");
+    header('Location: login.php');
   }

@@ -8,4 +8,7 @@
     showView("newtopic", 0, array(
       'topic' => $topic
     ));
+  } else {
+    setError("Please log in.");
+    header('Location: login.php');
   }
