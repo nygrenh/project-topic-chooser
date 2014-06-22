@@ -2,8 +2,8 @@
 <p>
   <?php echo htmlspecialchars($data->topic->getDescription()); ?>
 </p>
-<p> Average hours: <?php echo htmlspecialchars($data->topic->averageHours()); ?>
-  Average grade: <?php echo htmlspecialchars($data->topic->averageGrade()); ?>
+<p> Average hours: <?php echo htmlspecialchars($data->topic->averageHours()); ?>.
+  Average grade: <?php echo htmlspecialchars($data->topic->averageGrade()); ?>.
   Failure rate: <?php echo htmlspecialchars($data->topic->failureRate()); ?>%
 </p>
 <?php if (loggedIn()): ?>

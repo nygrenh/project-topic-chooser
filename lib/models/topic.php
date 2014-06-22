@@ -163,14 +163,14 @@ Class Topic {
     $sql = "select avg(grade) from project where topic_id = ? and grade != 0";
     $query = getDatabaseconnection()->prepare($sql);
     $query->execute(array($this->getId()));
-    return (double)$query->fetchColumn();
+    return round($query->fetchColumn(), 1);
   }
 
   public function averageHours() {
     $sql = "select avg(hours) from project where topic_id = ? and grade != 0";
     $query = getDatabaseconnection()->prepare($sql);
     $query->execute(array($this->getId()));
-    return (double)$query->fetchColumn();
+    return round($query->fetchColumn());
   }
 
   public function failureCount() {
@@ -190,7 +190,8 @@ Class Topic {
   public function failureRate() {
     $failures = $this->failureCount();
     $successes = $this->successCount();
-    return $failures / ($failures + $successes) * 100;
+    $rate = $failures / ($failures + $successes) * 100;
+    return round($rate, 2);
   }
 
 }

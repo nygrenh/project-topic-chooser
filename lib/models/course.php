@@ -134,9 +134,9 @@ Class Course {
     }
     $sentence = "";
     foreach($teachers as $teacher) {
-      $sentence = $sentence." ".$teacher->getName();
+      $sentence = $sentence.", ".$teacher->getName();
     }
-    return $sentence;
+    return substr($sentence, 2);
   }
 
   public function getTopics() {
